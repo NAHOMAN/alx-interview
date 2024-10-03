@@ -1,20 +1,37 @@
 #!/usr/bin/python3
 
 def pascal_triangle(n):
+    """ Returns a list of lists representing Pascal's triangle of size n. """
+    
     # Return an empty list if n is less than or equal to 0
     if n <= 0:
         return []
-
-    triangle = []  # This will hold the rows of Pascal's triangle
-
+    
+    # Initialize the triangle
+    triangle = []
+    
     for i in range(n):
-        # Initialize the current row with 1s
+        # Create a new row initialized with 1s
         row = [1] * (i + 1)
-
-        # Calculate the values for the inner elements of the row
+        
+        # Fill in the values for the current row
         for j in range(1, i):
+            # Each element is the sum of the two elements above it
             row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
-
-        triangle.append(row)  # Add the constructed row to the triangle
-
+        
+        # Append the current row to the triangle
+        triangle.append(row)
+    
     return triangle
+
+# Function to print the triangle
+def print_triangle(triangle):
+    """ Prints the triangle in a formatted way. """
+    for row in triangle:
+        print("[{}]".format(",".join(map(str, row))))
+
+# Testing the function
+if __name__ == "__main__":
+    n = 5  # You can change this value to test with different sizes
+    triangle = pascal_triangle(n)
+    print_triangle(triangle)
