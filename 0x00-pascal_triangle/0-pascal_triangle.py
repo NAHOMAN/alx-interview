@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 def pascal_triangle(n):
     """ Returns a list of lists representing Pascal's triangle of size n. """
     
@@ -24,14 +22,3 @@ def pascal_triangle(n):
     
     return triangle
 
-# Function to print the triangle
-def print_triangle(triangle):
-    """ Prints the triangle in a formatted way. """
-    for row in triangle:
-        print("[{}]".format(",".join(map(str, row))))
-
-# Testing the function
-if __name__ == "__main__":
-    n = 5  # You can change this value to test with different sizes
-    triangle = pascal_triangle(n)
-    print_triangle(triangle)
