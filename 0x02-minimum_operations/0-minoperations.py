@@ -1,5 +1,7 @@
+#!/usr/bin/python3
+
 def minOperations(n):
-    # If n is less than or equal to 1, no operations can be performed to reach n H's
+    # If n is less than or equal to 1, no operations can be performed
     if n <= 1:
         return 0
 
