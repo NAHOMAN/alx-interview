@@ -2,16 +2,17 @@
 
 const request = require('request');
 
-const movieId = process.argv[2]; // Get the Movie ID from the command-line argument
+// Read the Movie ID from the first argument
+const movieId = process.argv[2];
 if (!movieId) {
   console.error('Usage: ./0-starwars_characters.js <Movie ID>');
   process.exit(1);
 }
 
-// URL for the Star Wars API films endpoint
+// Star Wars API URL for the given movie ID
 const apiUrl = `https://swapi.dev/api/films/${movieId}/`;
 
-// Make a request to get the movie details
+// Fetch the movie details
 request(apiUrl, (error, response, body) => {
   if (error) {
     console.error(error);
@@ -26,10 +27,9 @@ request(apiUrl, (error, response, body) => {
   // Parse the response body
   const movie = JSON.parse(body);
 
-  // Get the list of character URLs
+  // Fetch and print each character's name
   const characters = movie.characters;
 
-  // Fetch and print each character's name
   characters.forEach((characterUrl) => {
     request(characterUrl, (charError, charResponse, charBody) => {
       if (charError) {
